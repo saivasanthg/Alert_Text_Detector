@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .feed-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .user-feed {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .user-feed h2 {
+            color: #333;
+        }
+        .tweet {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        .alert-tweet {
+            background-color: #f8d7da;
+        }
+        .tweet h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .tweet p {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Feeds</h1>
+
+    {% if all_user_feeds %}
+        <div class="feed-container">
+            {% for user_id, user_feed in all_user_feeds.items() %}
+                <div class="user-feed">
+                    <h2>User ID: {{ user_id }}</h2>
+
+                    <!-- Display all tweets (regular and alert together) -->
+                    {% if user_feed['regular_tweets'] or user_feed['alert_tweets'] %}
+                        {% for tweet in user_feed['regular_tweets'] + user_feed['alert_tweets'] %}
+                            <div class="tweet {% if tweet[3] == 'alert' %}alert-tweet{% endif %}">
+                                <h4>{{ tweet[1] }}</h4> <!-- Tweet content -->
+                                <p><strong>Location:</strong> {{ tweet[2] }} | <strong>Genre:</strong> {{ tweet[4] }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No tweets available.</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No user feeds available.</p>
+    {% endif %}
+</body>
+</html>
