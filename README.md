@@ -65,5 +65,6 @@ Distributed under the Apache 2.0 License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - [Your Email]
+Sai Vasanth G
+gsvsanth2004@gmail.com
 
