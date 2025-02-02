@@ -39,7 +39,8 @@ Alert Text Detector is an advanced Natural Language Processing (NLP) model desig
 1. Clone the repository
 ```bash
 git clone https://github.com/saivasanthg/Alert_Text_Detector.git
-cd alert-text-detector
+cd Alert_Text_Detector
+
 ```
 
 
