@@ -52,8 +52,8 @@ cd Alert_Text_Detector
 - Hashtag analysis
 - Train-test split (80% training, 20% validation)
   
-![ss](Images/Screenshot_(6).png)
-![ss](Images/Screenshot_(7).png)
+![ss](Images/Screenshot_6.png)
+![ss](Images/Screenshot_7.png)
 
 
 ## Future Roadmap
