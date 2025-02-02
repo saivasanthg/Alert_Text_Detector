@@ -57,7 +57,7 @@ cd Alert_Text_Detector
 - [ ] Multi-language support
 - [ ] Real-time streaming alert detection
 - [ ] Integration with more social media platforms
-- [ ] Enhanced location-based alert filtering
+- [ ] Decoding of emoticons for better contextual understanding
 
 
 ## License
