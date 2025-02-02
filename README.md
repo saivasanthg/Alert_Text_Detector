@@ -51,8 +51,11 @@ cd Alert_Text_Detector
 - Keyword extraction using `paraphrase-MiniLM-L6-v2`
 - Hashtag analysis
 - Train-test split (80% training, 20% validation)
-  
+
+  TRAINING PROCESS
 ![ss](Images/Screenshot_6.png)
+
+
 ![ss](Images/Screenshot_7.png)
 
 
