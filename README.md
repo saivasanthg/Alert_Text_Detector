@@ -44,17 +44,17 @@ Temporal Context: Tweets mentioning past events that should not be flagged as cu
 
 Comprehensive Alert Categories: A wide range of positive alert tweets covering various scenarios, including:
 
-Natural Disasters
+NATURAL DISASTERS
 
-Health Emergencies
+HEALTH EMERGENCIES
 
-Civil & Political Unrest
+CIVIL AND POLITICAL UNREST
 
-Infrastructure Failures & Accidents
+INFRASTRUCTURE FAILURES
 
-Crime and Safety Alerts
+CRIME AND SAFETY ALERTS
 
-Financial Emergencies
+FINANCIAL EMERGENCIES
 
 Varied Tweet Structures: Data was designed to mimic real social media posts, including tweets with and without hashtags, locations, and different points of view (e.g., first-person vs. third-person announcements).
 
