@@ -33,7 +33,7 @@ Alert Text Detector is an advanced Natural Language Processing (NLP) model desig
 - **Web Framework**: Flask
 - **Database**: SQLite3
 
-## Data 
+## Data Gathering
 This project's core dataset was built from a combination of a ready-made source and a strategically designed synthetic dataset. The goal was to train a model that could handle the nuances of real-world language, including sarcasm, historical references, and diverse alert categories, which are often sources of misclassification.
 
 The synthetic data was meticulously created across the following categories:
