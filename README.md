@@ -33,6 +33,33 @@ Alert Text Detector is an advanced Natural Language Processing (NLP) model desig
 - **Web Framework**: Flask
 - **Database**: SQLite3
 
+## Data 
+This project's core dataset was built from a combination of a ready-made source and a strategically designed synthetic dataset. The goal was to train a model that could handle the nuances of real-world language, including sarcasm, historical references, and diverse alert categories, which are often sources of misclassification.
+
+The synthetic data was meticulously created across the following categories:
+
+Handling Ambiguity & Sarcasm: Tweets with "negative" keywords that were not actual alerts (e.g., "What a disaster!" in a movie review or sarcastic remarks).
+
+Temporal Context: Tweets mentioning past events that should not be flagged as current alerts (e.g., "The storm last year...").
+
+Comprehensive Alert Categories: A wide range of positive alert tweets covering various scenarios, including:
+
+Natural Disasters
+
+Health Emergencies
+
+Civil & Political Unrest
+
+Infrastructure Failures & Accidents
+
+Crime and Safety Alerts
+
+Financial Emergencies
+
+Varied Tweet Structures: Data was designed to mimic real social media posts, including tweets with and without hashtags, locations, and different points of view (e.g., first-person vs. third-person announcements).
+
+This approach ensured the model was trained on a rich, diverse dataset that directly addressed common NLP challenges, leading to higher accuracy and precision. Following data collection, a comprehensive preprocessing pipeline was applied to clean and prepare the text for the model.
+
 
 ## Installation
 
