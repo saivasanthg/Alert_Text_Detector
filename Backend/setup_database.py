@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS tweets (
     tweet_id INTEGER PRIMARY KEY,
     content TEXT,
     location TEXT,
-    classification TEXT
+    classification TEXT, 
+    genre TEXT
 );
 """)
 

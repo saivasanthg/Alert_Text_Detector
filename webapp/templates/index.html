@@ -6,42 +6,92 @@
     <title>User Feed</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        .feed-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .user-feed {
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        .user-feed h2 {
-            color: #333;
-        }
-        .tweet {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #e9ecef;
-            border-radius: 5px;
-        }
-        .alert-tweet {
-            background-color: #f8d7da;
-        }
-        .tweet h4 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
             margin: 0;
-            font-size: 18px;
+            padding: 0;
         }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #2c3e50;
+        }
+
+        .feed-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .user-feed {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .user-feed:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .user-feed h2 {
+            margin-top: 0;
+            color: #34495e;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .user-location {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-left: 10px;
+        }
+
+        .tweet {
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            background-color: #eaf2f8;
+            transition: background-color 0.2s;
+        }
+
+        .tweet:hover {
+            background-color: #d6eaf8;
+        }
+
+        .alert-tweet {
+            background-color: #f9d6d5;
+        }
+
+        .alert-tweet:hover {
+            background-color: #f5b7b1;
+        }
+
+        .tweet h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+
         .tweet p {
-            font-size: 14px;
-            color: #555;
+            margin: 0;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        @media(max-width: 768px) {
+            .feed-container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -52,14 +102,19 @@
         <div class="feed-container">
             {% for user_id, user_feed in all_user_feeds.items() %}
                 <div class="user-feed">
-                    <h2>User ID: {{ user_id }}</h2>
+                    <h2>
+                        User ID: {{ user_id }}
+                        <span class="user-location">({{ user_feed['location'] }})</span>
+                    </h2>
 
-                    <!-- Display all tweets (regular and alert together) -->
                     {% if user_feed['regular_tweets'] or user_feed['alert_tweets'] %}
                         {% for tweet in user_feed['regular_tweets'] + user_feed['alert_tweets'] %}
                             <div class="tweet {% if tweet[3] == 'alert' %}alert-tweet{% endif %}">
-                                <h4>{{ tweet[1] }}</h4> <!-- Tweet content -->
-                                <p><strong>Location:</strong> {{ tweet[2] }} | <strong>Genre:</strong> {{ tweet[4] }}</p>
+                                <h4>{{ tweet[1] }}</h4>
+                                <p>
+                                    <strong>Location:</strong> {{ tweet[2] }} &nbsp;|&nbsp;
+                                    <strong>Genre:</strong> {{ tweet[4] }}
+                                </p>
                             </div>
                         {% endfor %}
                     {% else %}
@@ -69,7 +124,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>No user feeds available.</p>
+        <p style="text-align:center; color:#7f8c8d;">No user feeds available.</p>
     {% endif %}
 </body>
 </html>
