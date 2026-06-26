@@ -1,15 +1,15 @@
 # Alert Text Detector 🚨📱
 <p align="center">
   <!-- Top Left Image -->
-  <img src="./Images/FULL_SCREEN.png" width="45%" />
+  <img src="./Images/FULL_SCREEN.png" width="350" height="220" style="object-fit: cover;" />
   
   <!-- Top Right Image -->
-  <img src="./Images/Processing.png" width="45%" />
+  <img src="./Images/Processing.png" width="350" height="220" style="object-fit: cover;" />
   
   <br /> <!-- This forces the next image to the next line -->
   
   <!-- Bottom Centered Image -->
-  <img src="./Images/LIVE_MODULES.png" width="60%" />
+  <img src="./Images/LIVE_MODULES.png" width="350" height="220" style="object-fit: cover;" />
 </p>
 
 
