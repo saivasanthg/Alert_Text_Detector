@@ -1,4 +1,4 @@
-# Alert Text Detector 🚨📱
+# SOCIAL MEDIA TEXT CLASSIFICATION ENGINE 
 <p align="center">
   <!-- Top Left Image -->
   <img src="./Images/FULL_SCREEN.png" width="45%" height="250" style="object-fit: cover;" />
@@ -19,10 +19,10 @@ Alert Text Detector is an advanced Natural Language Processing (NLP) model desig
 
 ## Key Features
 
-- 🧠 **Advanced NLP Model**: Utilizes Bertweet Base model for sophisticated text classification
-- 🔍 **High Precision Detection**: Achieves over 93% precision in identifying alert texts
-- 📍 **Location-Based Alerts**: Customizable alert distribution based on user interests and locations
-- 🔬 **Comprehensive Preprocessing**: Includes lemmatization, keyword extraction, and hashtag analysis
+-  **Advanced NLP Model**: Utilizes Bertweet Base model for sophisticated text classification
+-  **High Precision Detection**: Achieves over 93% precision in identifying alert texts
+-  **Location-Based Alerts**: Customizable alert distribution based on user interests and locations
+-  **Comprehensive Preprocessing**: Includes lemmatization, keyword extraction, and hashtag analysis
 
 ## Performance Metrics
 
