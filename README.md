@@ -13,7 +13,7 @@
 </p>
 
 
-## Project Overview
+## Overview
 
 Alert Text Detector is an advanced Natural Language Processing (NLP) model designed to identify and flag emergency or critical alert messages across social media platforms. Leveraging state-of-the-art machine learning techniques, this project aims to provide real-time detection of urgent communications.
 
@@ -44,7 +44,7 @@ Alert Text Detector is an advanced Natural Language Processing (NLP) model desig
 - **Data Processing**: Pandas, NumPy, NLTK
 - **Model Training**: PyTorch
 - **Web Framework**: Flask
-- **Database**: SQLite3
+- **Database**: PostGreSQL
 
 ## Data Gathering
 This project's core dataset was built from a combination of a ready-made source and a strategically designed synthetic dataset. The goal was to train a model that could handle the nuances of real-world language, including sarcasm, historical references, and diverse alert categories, which are often sources of misclassification.
@@ -98,6 +98,15 @@ cd Alert_Text_Detector
 
 ![ss](Images/Screenshot_7.png)
 
+### Containerization & Architecture
+
+The system is fully containerized using **Docker** and orchestrated via **Docker Compose**, establishing a scalable, multi-tenant microservice ecosystem. Instead of a monolithic layout, the pipeline is split into three decoupled services running over an isolated internal virtual network:
+
+* **Frontend Service:** A lightweight containerized `Streamlit` dashboard providing live operational visibility and data entry gateways.
+* **Backend Inference Engine:** A standalone `Flask` API container housing the fine-tuned deep learning transformer model, handling realtime text tokenization, inference execution, and pipeline routing.
+* **Database Tier:** An isolated `PostgreSQL` relational container managing persistent transactional records and regional routing validation.
+
+This containerized approach ensures complete environment configuration locking, zero host-machine dependency drift, and an immutable deployment setup that spins up instantly with a single command (`docker-compose up --build`).
 
 ## Future Roadmap
 
