@@ -1,5 +1,8 @@
 # Alert Text Detector 🚨📱
 ![ss](Images/FULL_SCREEN.png)
+![ss](Images/LIVE_MODULE.png)
+![ss](Images/Processing.png)
+
 ## Project Overview
 
 Alert Text Detector is an advanced Natural Language Processing (NLP) model designed to identify and flag emergency or critical alert messages across social media platforms. Leveraging state-of-the-art machine learning techniques, this project aims to provide real-time detection of urgent communications.
