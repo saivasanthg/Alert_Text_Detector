@@ -9,7 +9,7 @@
   <br /> <!-- This forces the next image to the next line -->
   
   <!-- Bottom Centered Image -->
-  <img src="./Images/LIVE_MODULES.png" width="75%%" height="380" style="object-fit: cover;" />
+  <img src="./Images/LIVE_MODULES.png" width="75%%" height="380" style="object-fit: cover;margin-left: 50px;" />
 </p>
 
 
