@@ -1,6 +1,5 @@
 # Alert Text Detector 🚨📱
-![ss](Images/FULL_SCREEN.png)
-![ss](Images/LIVE_MODULE.png)
+![ss](Images/FULL_SCREEN.png) ![ss](Images/LIVE_MODULE.png)
 ![ss](Images/Processing.png)
 
 ## Project Overview
