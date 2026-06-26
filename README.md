@@ -46,7 +46,7 @@ Alert Text Detector is an advanced Natural Language Processing (NLP) model desig
 - **Web Framework**: Flask
 - **Database**: PostGreSQL
 
-## 📊 Dataset & Data Engineering Strategy
+##  Dataset & Data Engineering Strategy
 
 The core machine learning engine is trained on a hybrid data model combining established real-world benchmark datasets with a strategically designed, custom synthetic dataset. This approach ensures high precision across complex human linguistic nuances, eliminating common sources of false positives and adversarial misclassifications.
 
