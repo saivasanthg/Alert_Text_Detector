@@ -1,6 +1,17 @@
 # Alert Text Detector 🚨📱
-![ss](Images/FULL_SCREEN.png) ![ss](Images/LIVE_MODULE.png)
-![ss](Images/Processing.png)
+<p align="center">
+  <!-- Top Left Image -->
+  <img src="./Images/FULL_SCREEN.png" width="45%" />
+  
+  <!-- Top Right Image -->
+  <img src="./Images/LIVE_MODULES.png" width="45%" />
+  
+  <br /> <!-- This forces the next image to the next line -->
+  
+  <!-- Bottom Centered Image -->
+  <img src="./Images/Processing.png" width="60%" />
+</p>
+
 
 ## Project Overview
 
