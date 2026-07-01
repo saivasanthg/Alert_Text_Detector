@@ -3,13 +3,11 @@ import time
 import psycopg2
 from flask import Flask, request, jsonify
 
-# 🤖 Deep Learning Ecosystem Imports
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 app = Flask(__name__)
 
-# Directory path where docker-compose mounts your local Windows Model folder
 MODEL_PATH = "/workspace/model"
 
 print("\n=== ⚙️ STARTING TRANSFORMER ROUTING BACKEND ===\n")
@@ -20,7 +18,6 @@ tokenizer = None
 model = None
 
 try:
-    # This automatically reads your config.json architecture details
     tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
     model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
     model.eval()  # Set layers to evaluation mode (disables dropout/batchnorm updates)
@@ -45,13 +42,11 @@ def init_db():
     """Verifies relational database structural tables and seeds primary profile components on startup."""
     print("--> Connecting to PostgreSQL service to verify schema architecture...")
     
-    # Simple retry block in case the Postgres service container takes an extra second to accept sockets
     for attempt in range(5):
         try:
             conn = get_db_connection()
             cursor = conn.cursor()
             
-            # 1. Core user/operator feeds map table
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS users (
                     user_id TEXT PRIMARY KEY,
@@ -61,7 +56,6 @@ def init_db():
                 );
             """)
             
-            # 2. Pipeline transaction storage table
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS tweets (
                     id SERIAL PRIMARY KEY,
@@ -72,7 +66,6 @@ def init_db():
                 );
             """)
             
-            # 3. Seed a workspace manager if the relational infrastructure is completely empty
             cursor.execute("SELECT COUNT(*) FROM users;")
             if cursor.fetchone()[0] == 0:
                 cursor.execute("""
@@ -105,54 +98,41 @@ def submit_tweet():
     if not raw_text:
         return jsonify({"status": "error", "error": "Empty text payload submitted."}), 400
 
-    # Pipeline tracking log to generate real-time feedback loop in Streamlit
     pipeline_logs = []
     
-    # Step 1: Ingestion
     pipeline_logs.append("📥 Ingestion Gateway: Intercepted raw text stream string.")
     time.sleep(0.3)  # Tiny micro-delay to allow visual steps to render neatly in the UI
     
-    # Step 2: Transformer Inference Forward Pass
     pipeline_logs.append("🤖 ML Pipeline: Splitting sequences into tokens and preparing tensor forward pass...")
     
     classification_result = "UNKNOWN"
     
     if model is not None and tokenizer is not None:
         try:
-            # Tokenize incoming input strings text using native PyTorch formats
             inputs = tokenizer(raw_text, return_tensors="pt", truncation=True, padding=True, max_length=512)
             
-            # Execute classification forward pass without building graph gradients (saves memory on CPU)
             with torch.no_grad():
                 outputs = model(**inputs)
             
-            # 🔮 === ADDED DEBUG LINE START ===
             logits = outputs.logits
             print(f"\n🔮 [DEBUG] Raw Logits Shape: {logits.shape} | Tensor Values: {logits.tolist()}")
-            # 🔮 === ADDED DEBUG LINE END ===
             
-            # Determine prediction from highest distribution value in logit array
             predicted_class_id = torch.argmax(logits, dim=1).item()
             
-            # Force-map the numerical IDs directly to your tweet dataset's original targets
             labels_map = {0: "NON-ALERT", 1: "ALERT"}
             classification_result = labels_map.get(predicted_class_id, "UNKNOWN")
             
-            # (Optional) If your labels are flipped (0=Alert, 1=Non-Alert), just swap the values above!
                 
             pipeline_logs.append(f"✅ Inference System: Tensor evaluation complete. Label output: [{classification_result}]")
             
         except Exception as inference_err:
             pipeline_logs.append(f"❌ Tensor Engine Failure: {str(inference_err)}. Reverting to rule fallback.")
-            # Rule fallback logic
             classification_result = "ALERT" if any(w in raw_text.lower() for w in ["emergency", "accident", "crash", "alert"]) else "NON-ALERT"
     else:
-        # Fallback tracking if weights are missing or failed to initialize globally
         pipeline_logs.append("⚠️ System Warning: Active weights missing. Deploying structural keyword heuristic parser.")
         classification_result = "ALERT" if any(w in raw_text.lower() for w in ["emergency", "accident", "crash", "alert"]) else "NON-ALERT"
         time.sleep(0.5)
 
-    # Step 3: Transaction Commits to PostgreSQL
     pipeline_logs.append("🗄️ Database Hub: Connecting to PostgreSQL cluster to log operational transactions...")
     try:
         conn = get_db_connection()
@@ -195,7 +175,6 @@ def get_feeds():
         conn = get_db_connection()
         cursor = conn.cursor()
         
-        # Pull latest transactions first
         cursor.execute("SELECT id, text, classification, location FROM tweets ORDER BY id DESC;")
         rows = cursor.fetchall()
         
@@ -217,6 +196,5 @@ def get_feeds():
 
 
 if __name__ == '__main__':
-    # Build database architecture before firing up the WSGI network interface
     init_db()
     app.run(host='0.0.0.0', port=5000, debug=True)
